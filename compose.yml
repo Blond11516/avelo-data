@@ -1,0 +1,13 @@
+services:
+  database:
+    image: timescale/timescaledb-ha:pg17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: avelo_data_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/pgdata
+volumes:
+  database:
