@@ -97,3 +97,12 @@ if config_env() == :prod do
   #
   # Check `Plug.SSL` for all available options in `force_ssl`.
 end
+
+# Setup GeoPostGIS
+Postgrex.Types.define(
+  AveloData.PostgresTypes,
+  [Geo.PostGIS.Extension] ++ Ecto.Adapters.Postgres.extensions(),
+  json: JSON
+)
+
+config :avelo_data, AveloData.Repo, types: AveloData.PostgresTypes

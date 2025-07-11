@@ -32,6 +32,9 @@ defmodule AveloData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:geo_postgis, "~> 3.0"},
+      {:geo, "~> 4.0"},
+      {:req, "~> 0.5"},
       {:phoenix, "~> 1.7.21"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
@@ -52,9 +55,9 @@ defmodule AveloData.MixProject do
        depth: 1},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:igniter, "~> 0.6", only: [:dev, :test]}
     ]
   end
 
