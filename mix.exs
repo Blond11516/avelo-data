@@ -32,6 +32,7 @@ defmodule AveloData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:typedstruct, "~> 0.5"},
       {:geo_postgis, "~> 3.0"},
       {:geo, "~> 4.0"},
       {:req, "~> 0.5"},
