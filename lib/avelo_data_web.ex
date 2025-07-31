@@ -38,9 +38,7 @@ defmodule AveloDataWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: AveloDataWeb.Layouts]
+      use Phoenix.Controller, formats: [:html, :json]
 
       import Plug.Conn
 
@@ -50,8 +48,7 @@ defmodule AveloDataWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {AveloDataWeb.Layouts, :app}
+      use Phoenix.LiveView
 
       unquote(html_helpers())
     end
@@ -85,8 +82,9 @@ defmodule AveloDataWeb do
       # Core UI components
       import AveloDataWeb.CoreComponents
 
-      # Shortcut for generating JS commands
+      # Common modules used in templates
       alias Phoenix.LiveView.JS
+      alias AveloDataWeb.Layouts
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

@@ -10,7 +10,8 @@ defmodule AveloData.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      compilers: [:phoenix_live_view] ++ Mix.compilers()
+      compilers: [:phoenix_live_view] ++ Mix.compilers(),
+      listeners: [Phoenix.CodeReloader]
     ]
   end
 
@@ -35,21 +36,21 @@ defmodule AveloData.MixProject do
     [
       {:bandit, "1.7.0"},
       {:ecto_sql, "3.13.2"},
-      {:dns_cluster, "== 0.2.0"},
+      {:dns_cluster, "0.2.0"},
       {:geo, "4.0.1"},
       {:geo_postgis, "3.7.1"},
       {:heroicons,
        github: "tailwindlabs/heroicons",
-       tag: "v2.1.1",
+       tag: "v2.2.0",
        sparse: "optimized",
        app: false,
        compile: false,
        depth: 1},
-      {:phoenix, "1.7.21"},
+      {:phoenix, "1.8.0-rc.4", override: true},
       {:phoenix_ecto, "4.6.5"},
       {:phoenix_html, "4.2.1"},
       {:phoenix_live_dashboard, "0.8.7"},
-      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_live_view, "1.1.1"},
       {:postgrex, "0.21.0"},
       {:req, "0.5.15"},
       {:telemetry_metrics, "1.1.0"},
@@ -59,7 +60,7 @@ defmodule AveloData.MixProject do
       # Dev/build dependencies
       {:esbuild, "0.10.0", runtime: Mix.env() == :dev},
       {:phoenix_live_reload, "1.6.0", only: :dev},
-      {:tailwind, "0.2.4"},
+      {:tailwind, "0.3.1", runtime: Mix.env() == :dev},
 
       # Test dependencies
       {:lazy_html, "0.1.3", only: :test},

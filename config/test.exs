@@ -17,7 +17,7 @@ config :avelo_data, AveloData.Repo,
 # you can enable the server option below.
 config :avelo_data, AveloDataWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "DVxH87uzL8dzf+sP2UOacrpdRogc9rI4YnIf7LvJILxBPPOM0O0LpOn3cXZKYvwB",
+  secret_key_base: "Ay+8Bbrwm8su+bhltggZFlwtgq5gRyvikjETMDME/jQC/eNaWgFn2HQvaDeLqgvQ",
   server: false
 
 # Print only warnings and errors during test
