@@ -2,7 +2,7 @@ defmodule AveloData.StationInformationUpdater do
   require Logger
 
   def update() do
-    {:ok, stations} = AveloData.AveloClient.retrieve_station_informations()
+    {:ok, stations} = AveloData.GbfsClient.retrieve_station_informations()
     Enum.each(stations, &upsert_station/1)
     :ok
   end

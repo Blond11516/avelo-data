@@ -1,4 +1,4 @@
-defmodule AveloData.AveloClient do
+defmodule AveloData.GbfsClient do
   @base_url "https://quebec.publicbikesystem.net/customer/ube/gbfs/v1/en"
 
   def retrieve_station_informations do
