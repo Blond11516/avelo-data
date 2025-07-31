@@ -1,4 +1,4 @@
-defmodule AveloData.Station do
+defmodule AveloData.Models.Station do
   use TypedStruct
 
   typedstruct enforce: true do
