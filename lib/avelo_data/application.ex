@@ -10,6 +10,7 @@ defmodule AveloData.Application do
     children = [
       AveloDataWeb.Telemetry,
       AveloData.Repo,
+      AveloData.StationUpdateManager,
       {DNSCluster, query: Application.get_env(:avelo_data, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: AveloData.PubSub},
       # Start a worker by calling: AveloData.Worker.start_link(arg)
