@@ -22,29 +22,18 @@ import "phoenix_html";
 // Establish Phoenix Socket and LiveView configuration.
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
-// import { hooks as colocatedHooks } from "phoenix-colocated/avelo_data";
-import colocatedJs from "phoenix-colocated/avelo_data";
+import { hooks as colocatedHooks } from "phoenix-colocated/avelo_data";
 import topbar from "../vendor/topbar";
 import "../vendor/leaflet";
-
-const colocatedHooks = {};
 
 const csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
 
-const x = "".startsWith("");
-
-const hooksFromColocatedJs = Object.entries(colocatedJs)
-  .filter(([key]) => key.startsWith("__Hooks__"))
-  .reduce((acc, [, hooks]) => {
-    return { ...acc, ...hooks };
-  }, {});
-
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   params: { _csrf_token: csrfToken },
-  hooks: { ...colocatedHooks, ...hooksFromColocatedJs },
+  hooks: { ...colocatedHooks },
 });
 
 // Show progress bar on live navigation and form submits
