@@ -84,10 +84,10 @@ if config_env() == :prod do
 end
 
 config :avelo_data, :object_storage, %{
-  bucket: System.fetch_env!("OBJECT_STORAGE_BUCKET"),
-  access_key_id: System.fetch_env!("OBJECT_STORAGE_ACCESS_KEY_ID"),
-  secret_access_key: System.fetch_env!("OBJECT_STORAGE_SECRET_ACCESS_KEY"),
-  base_url: System.fetch_env!("OBJECT_STORAGE_BASE_URL")
+  bucket: System.fetch_env!("BUCKET_NAME"),
+  access_key_id: System.fetch_env!("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.fetch_env!("AWS_SECRET_ACCESS_KEY"),
+  base_url: System.fetch_env!("AWS_ENDPOINT_URL_S3")
 }
 
 update_interval =
