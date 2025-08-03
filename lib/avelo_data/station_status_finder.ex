@@ -1,8 +1,7 @@
 defmodule AveloData.StationStatusFinder do
-  alias AveloData.Repo
-  alias AveloDataInfrastructure.StationSchema
+  alias AveloData.StationStore
 
   def find() do
-    Repo.all(StationSchema)
+    StationStore.retrieve()
   end
 end

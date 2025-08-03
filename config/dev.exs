@@ -1,15 +1,5 @@
 import Config
 
-# Configure your database
-config :avelo_data, AveloData.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "avelo_data_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

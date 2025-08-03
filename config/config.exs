@@ -7,10 +7,6 @@
 # General application configuration
 import Config
 
-config :avelo_data,
-  ecto_repos: [AveloData.Repo],
-  generators: [timestamp_type: :utc_datetime]
-
 # Configures the endpoint
 config :avelo_data, AveloDataWeb.Endpoint,
   url: [host: "localhost"],

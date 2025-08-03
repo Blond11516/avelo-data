@@ -36,11 +36,9 @@ defmodule AveloData.MixProject do
     [
       {:aws_signature, "0.4.0"},
       {:bandit, "1.7.0"},
-      {:ecto_sql, "3.13.2"},
       {:dns_cluster, "0.2.0"},
       {:explorer, "0.11.0"},
       {:geo, "4.0.1"},
-      {:geo_postgis, "3.7.1"},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.2.0",
@@ -49,11 +47,9 @@ defmodule AveloData.MixProject do
        compile: false,
        depth: 1},
       {:phoenix, "1.8.0-rc.4", override: true},
-      {:phoenix_ecto, "4.6.5"},
       {:phoenix_html, "4.2.1"},
       {:phoenix_live_dashboard, "0.8.7"},
       {:phoenix_live_view, "1.1.1"},
-      {:postgrex, "0.21.0"},
       {:req, "0.5.15"},
       {:telemetry_metrics, "1.1.0"},
       {:telemetry_poller, "1.3.0"},
@@ -80,10 +76,8 @@ defmodule AveloData.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      setup: ["deps.get", "assets.setup", "assets.build"],
+      test: "test",
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind avelo_data", "esbuild avelo_data"],
       "assets.deploy": [

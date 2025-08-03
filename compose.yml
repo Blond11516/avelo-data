@@ -1,14 +1,4 @@
 services:
-  database:
-    image: timescale/timescaledb-ha:pg17
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: avelo_data_dev
-    ports:
-      - "5432:5432"
-    volumes:
-      - database:/pgdata
   object-storage:
     image: quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z
     environment:
@@ -24,5 +14,4 @@ services:
     volumes:
       - object-storage:/data
 volumes:
-  database:
   object-storage:

@@ -16,8 +16,8 @@ defmodule AveloDataWeb.HomeLive do
       >
         <div
           :for={station <- @stations}
-          :key={station.station_id}
-          id={station.station_id}
+          :key={station.id}
+          id={station.id}
           class="hidden"
           data-station
           data-lat={elem(station.geolocation.coordinates, 0)}
@@ -53,7 +53,8 @@ defmodule AveloDataWeb.HomeLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    stations = if connected?(socket), do: AveloData.StationStatusFinder.find(), else: []
+    stations =
+      if connected?(socket), do: AveloData.StationStatusFinder.find() |> elem(1), else: []
 
     socket = assign(socket, stations: stations)
 

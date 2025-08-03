@@ -9,8 +9,7 @@ defmodule AveloData.Application do
   def start(_type, _args) do
     children = [
       AveloDataWeb.Telemetry,
-      AveloData.Repo,
-      AveloData.StationUpdateManager,
+      # AveloData.StationUpdateManager,
       {DNSCluster, query: Application.get_env(:avelo_data, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: AveloData.PubSub},
       # Start a worker by calling: AveloData.Worker.start_link(arg)
