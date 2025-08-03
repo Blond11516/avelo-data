@@ -5,11 +5,22 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "assets/**"
+      - "config/**"
+      - "lib/**"
+      - "priv/**"
+      - "rel/**"
+      - ".dockerignore"
+      - "Dockerfile"
+      - "fly.toml"
+      - "mix.exs"
+      - "mix.lock"
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    concurrency: deploy-group    # optional: ensure only one action runs at a time
+    concurrency: deploy-group # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
