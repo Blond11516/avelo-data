@@ -5,6 +5,7 @@ defmodule AveloData.StationOccupancyRepository do
 
   def store(%StationOccupancy{} = station_occupancy) do
     # TODO get existing data and merge
+    # TODO benchmark parquet compression
     with {:ok, parquet} <- DataFrame.dump_parquet(station_occupancy.data),
          :ok <-
            S3Client.put_object(%S3Client.S3Request{
