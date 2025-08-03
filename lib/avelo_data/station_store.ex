@@ -11,8 +11,8 @@ defmodule AveloData.StationStore do
         %{
           id: station.id,
           geolocation: %{
-            lat: station.geolocation.coordinates |> elem(0),
-            lon: station.geolocation.coordinates |> elem(1)
+            lat: station.geolocation.latitude,
+            lon: station.geolocation.longitude
           },
           capacity: station.capacity,
           name: station.name
@@ -41,7 +41,7 @@ defmodule AveloData.StationStore do
        }) do
     %Station{
       id: id,
-      geolocation: %Geo.Point{coordinates: {lat, lon}},
+      geolocation: %{latitude: lat, longitude: lon},
       capacity: capacity,
       name: name
     }

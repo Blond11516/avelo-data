@@ -20,8 +20,8 @@ defmodule AveloDataWeb.HomeLive do
           id={station.id}
           class="hidden"
           data-station
-          data-lat={elem(station.geolocation.coordinates, 0)}
-          data-lon={elem(station.geolocation.coordinates, 1)}
+          data-lat={station.geolocation.latitude}
+          data-lon={station.geolocation.longitude}
         />
       </div>
     </Layouts.app>

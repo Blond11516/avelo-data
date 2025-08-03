@@ -18,8 +18,9 @@ defmodule AveloData.Gbfs.Client do
       groups: Map.fetch!(station_data, "groups"),
       is_charging_station: Map.fetch!(station_data, "is_charging_station"),
       altitude: Map.fetch!(station_data, "altitude"),
-      geolocation: %Geo.Point{
-        coordinates: {Map.fetch!(station_data, "lat"), Map.fetch!(station_data, "lon")}
+      geolocation: %{
+        latitude: Map.fetch!(station_data, "lat"),
+        longitude: Map.fetch!(station_data, "lon")
       },
       name: Map.fetch!(station_data, "name"),
       nearby_distance: Map.fetch!(station_data, "nearby_distance"),

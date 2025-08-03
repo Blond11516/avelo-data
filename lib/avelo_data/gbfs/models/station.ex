@@ -9,7 +9,6 @@ defmodule AveloData.Gbfs.Models.Station do
     field :groups, list(String.t())
     field :is_charging_station, boolean()
     field :altitude, float() | nil
-    field :geolocation, Geo.Point.t()
     field :name, String.t()
     field :nearby_distance, float()
     field :obcn, String.t()
@@ -18,6 +17,11 @@ defmodule AveloData.Gbfs.Models.Station do
     field :rental_methods, list(String.t())
     field :rental_uris, map()
     field :short_name, String.t()
+
+    field :geolocation, %{
+      latitude: float(),
+      longitude: float()
+    }
   end
 
   def to_station(%__MODULE__{} = station) do

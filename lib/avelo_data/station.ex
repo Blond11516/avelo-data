@@ -5,6 +5,10 @@ defmodule AveloData.Station do
     field :id, String.t()
     field :name, String.t()
     field :capacity, integer()
-    field :geolocation, Geo.Point.t()
+
+    field :geolocation, %{
+      latitude: float(),
+      longitude: float()
+    }
   end
 end
