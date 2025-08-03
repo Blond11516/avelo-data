@@ -47,7 +47,7 @@ defmodule AveloData.MixProject do
       {:phoenix, "1.8.0-rc.4", override: true},
       {:phoenix_html, "4.2.1"},
       {:phoenix_live_dashboard, "0.8.7"},
-      {:phoenix_live_view, "1.1.1"},
+      {:phoenix_live_view, "1.1.2"},
       {:req, "0.5.15"},
       {:telemetry_metrics, "1.1.0"},
       {:telemetry_poller, "1.3.0"},
