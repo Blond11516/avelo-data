@@ -11,4 +11,13 @@ defmodule AveloData.Station do
       longitude: float()
     }
   end
+
+  def from_gbfs_station(%AveloData.Gbfs.Models.Station{} = station) do
+    %__MODULE__{
+      id: station.station_id,
+      geolocation: station.geolocation,
+      capacity: station.capacity,
+      name: station.name
+    }
+  end
 end
