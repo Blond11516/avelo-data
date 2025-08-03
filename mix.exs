@@ -34,9 +34,11 @@ defmodule AveloData.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:aws_signature, "0.4.0"},
       {:bandit, "1.7.0"},
       {:ecto_sql, "3.13.2"},
       {:dns_cluster, "0.2.0"},
+      {:explorer, "0.11.0"},
       {:geo, "4.0.1"},
       {:geo_postgis, "3.7.1"},
       {:heroicons,

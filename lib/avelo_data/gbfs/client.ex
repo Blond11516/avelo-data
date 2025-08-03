@@ -1,13 +1,17 @@
-defmodule AveloData.GbfsClient do
+defmodule AveloData.Gbfs.Client do
+  alias AveloData.Gbfs.Models
+
   @base_url "https://quebec.publicbikesystem.net/customer/ube/gbfs/v1/en"
 
-  def retrieve_station_informations do
-    {:ok, %Req.Response{status: 200, body: body}} = Req.get("#{@base_url}/station_information")
-    {:ok, Enum.map(body["data"]["stations"], &parse_station/1)}
+  def retrieve_station_information do
+    with {:ok, %Req.Response{status: 200, body: body}} <-
+           Req.get("#{@base_url}/station_information") do
+      {:ok, Enum.map(body["data"]["stations"], &parse_station/1)}
+    end
   end
 
   defp parse_station(station_data) do
-    %AveloData.Models.Station{
+    %Models.Station{
       ride_code_support: Map.fetch!(station_data, "_ride_code_support"),
       address: Map.get(station_data, "address"),
       capacity: Map.fetch!(station_data, "capacity"),
@@ -29,13 +33,14 @@ defmodule AveloData.GbfsClient do
     }
   end
 
-  def retrieve_station_statuses do
-    {:ok, %Req.Response{status: 200, body: body}} = Req.get("#{@base_url}/station_status")
-    {:ok, Enum.map(body["data"]["stations"], &parse_station_status/1)}
+  def retrieve_station_status do
+    with {:ok, %Req.Response{status: 200, body: body}} <- Req.get("#{@base_url}/station_status") do
+      {:ok, Enum.map(body["data"]["stations"], &parse_station_status/1)}
+    end
   end
 
   defp parse_station_status(station_data) do
-    %AveloData.Models.StationStatus{
+    %Models.StationStatus{
       station_id: Map.fetch!(station_data, "station_id"),
       num_bikes_available: Map.fetch!(station_data, "num_bikes_available"),
       num_bikes_available_types: %{
@@ -45,7 +50,10 @@ defmodule AveloData.GbfsClient do
       num_bikes_disabled: Map.fetch!(station_data, "num_bikes_disabled"),
       num_docks_available: Map.fetch!(station_data, "num_docks_available"),
       num_docks_disabled: Map.fetch!(station_data, "num_docks_disabled"),
-      last_reported: Map.fetch!(station_data, "last_reported") |> DateTime.from_unix!(:second),
+      last_reported:
+        Map.fetch!(station_data, "last_reported")
+        |> DateTime.from_unix!(:second)
+        |> DateTime.to_naive(),
       is_charging_station: Map.fetch!(station_data, "is_charging_station"),
       status: Map.fetch!(station_data, "status"),
       is_installed: Map.fetch!(station_data, "is_installed") |> integer_to_boolean(),

@@ -107,4 +107,19 @@ Postgrex.Types.define(
   json: JSON
 )
 
+config :avelo_data, :object_storage, %{
+  bucket: System.fetch_env!("OBJECT_STORAGE_BUCKET"),
+  access_key_id: System.fetch_env!("OBJECT_STORAGE_ACCESS_KEY_ID"),
+  secret_access_key: System.fetch_env!("OBJECT_STORAGE_SECRET_ACCESS_KEY"),
+  base_url: System.fetch_env!("OBJECT_STORAGE_BASE_URL")
+}
+
+update_interval =
+  "UPDATE_INTERVAL_SECONDS"
+  |> System.get_env((15 * 60) |> Integer.to_string())
+  |> String.to_integer()
+  |> :timer.seconds()
+
+config :avelo_data, :update_interval, update_interval
+
 config :avelo_data, AveloData.Repo, types: AveloData.PostgresTypes

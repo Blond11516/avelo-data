@@ -1,7 +1,8 @@
-defmodule AveloData.Models.Station do
+defmodule AveloData.Gbfs.Models.Station do
   use TypedStruct
 
   typedstruct enforce: true do
+    field :station_id, String.t()
     field :ride_code_support, boolean()
     field :address, String.t() | nil
     field :capacity, integer()
@@ -17,6 +18,14 @@ defmodule AveloData.Models.Station do
     field :rental_methods, list(String.t())
     field :rental_uris, map()
     field :short_name, String.t()
-    field :station_id, String.t()
+  end
+
+  def to_station(%__MODULE__{} = station) do
+    %AveloData.Station{
+      id: station.station_id,
+      geolocation: station.geolocation,
+      capacity: station.capacity,
+      name: station.name
+    }
   end
 end

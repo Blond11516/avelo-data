@@ -3,8 +3,6 @@ defmodule AveloData.StationUpdateManager do
 
   require Logger
 
-  @update_interval_ms :timer.minutes(15)
-
   def start_link(_) do
     Logger.info("Starting #{__MODULE__}")
     GenServer.start_link(__MODULE__, nil, name: __MODULE__)
@@ -31,12 +29,11 @@ defmodule AveloData.StationUpdateManager do
 
   defp update() do
     Logger.info("Updating station data")
-    AveloData.StationInformationUpdater.update()
+    :ok = AveloData.StationInformationUpdater.update()
 
-    Logger.info(
-      "Station data updated successfully. Will update again in #{@update_interval_ms} ms"
-    )
+    update_interval = AveloDataConfig.update_interval()
+    Logger.info("Station data updated successfully. Will update again in #{update_interval} ms")
 
-    Process.send_after(self(), :update_stations, @update_interval_ms)
+    Process.send_after(self(), :update_stations, update_interval)
   end
 end
