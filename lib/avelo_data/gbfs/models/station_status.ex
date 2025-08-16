@@ -8,7 +8,7 @@ defmodule AveloData.Gbfs.Models.StationStatus do
     field :num_bikes_disabled, non_neg_integer()
     field :num_docks_available, non_neg_integer()
     field :num_docks_disabled, non_neg_integer()
-    field :last_reported, NaiveDateTime.t()
+    field :last_reported, DateTime.t()
     field :is_charging_station, boolean()
     field :status, String.t()
     field :is_installed, boolean()

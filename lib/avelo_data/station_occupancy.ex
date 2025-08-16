@@ -24,12 +24,17 @@ defmodule AveloData.StationOccupancy do
   def from_gbfs_status(station_statuses) when is_list(station_statuses) do
     date =
       station_statuses
-      |> Enum.map(fn status -> NaiveDateTime.to_date(status.last_reported) end)
-      |> Enum.max(&Date.after?/2)
+      |> Enum.map(& &1.last_reported)
+      |> Enum.max(&DateTime.after?/2)
 
     df =
       DataFrame.new([])
-      |> DataFrame.put(:reported_at, Enum.map(station_statuses, & &1.last_reported),
+      |> DataFrame.put(
+        :reported_at,
+        Enum.map(
+          station_statuses,
+          &(&1.last_reported |> DateTime.shift_zone!("UTC") |> DateTime.to_naive())
+        ),
         dtype: {:naive_datetime, :millisecond}
       )
       |> DataFrame.put(:station_id, Enum.map(station_statuses, & &1.station_id))
@@ -45,7 +50,7 @@ defmodule AveloData.StationOccupancy do
       )
 
     %__MODULE__{
-      date: date,
+      date: date |> DateTime.shift_zone!("America/Toronto") |> DateTime.to_date(),
       data: df
     }
   end

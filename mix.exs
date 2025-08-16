@@ -52,6 +52,7 @@ defmodule AveloData.MixProject do
       {:telemetry_metrics, "1.1.0"},
       {:telemetry_poller, "1.3.0"},
       {:typedstruct, "0.5.3"},
+      {:tz, "0.28.1"},
 
       # Dev/build dependencies
       {:esbuild, "0.10.0", runtime: Mix.env() == :dev},

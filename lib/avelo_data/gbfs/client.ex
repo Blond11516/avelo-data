@@ -53,8 +53,7 @@ defmodule AveloData.Gbfs.Client do
       num_docks_disabled: Map.fetch!(station_data, "num_docks_disabled"),
       last_reported:
         Map.fetch!(station_data, "last_reported")
-        |> DateTime.from_unix!(:second)
-        |> DateTime.to_naive(),
+        |> DateTime.from_unix!(:second),
       is_charging_station: Map.fetch!(station_data, "is_charging_station"),
       status: Map.fetch!(station_data, "status"),
       is_installed: Map.fetch!(station_data, "is_installed") |> integer_to_boolean(),
