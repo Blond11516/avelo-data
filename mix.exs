@@ -44,10 +44,10 @@ defmodule AveloData.MixProject do
        app: false,
        compile: false,
        depth: 1},
-      {:phoenix, "1.8.0-rc.4", override: true},
+      {:phoenix, "1.8.0"},
       {:phoenix_html, "4.2.1"},
       {:phoenix_live_dashboard, "0.8.7"},
-      {:phoenix_live_view, "1.1.2"},
+      {:phoenix_live_view, "1.1.4"},
       {:req, "0.5.15"},
       {:telemetry_metrics, "1.1.0"},
       {:telemetry_poller, "1.3.0"},
@@ -60,10 +60,10 @@ defmodule AveloData.MixProject do
       {:tailwind, "0.3.1", runtime: Mix.env() == :dev},
 
       # Test dependencies
-      {:lazy_html, "0.1.3", only: :test},
+      {:lazy_html, "0.1.6", only: :test},
 
       # No-runtime dev dependencies
-      {:igniter, "0.6.25", only: [:dev, :test]}
+      {:igniter, "0.6.27", only: [:dev, :test]}
     ]
   end
 
